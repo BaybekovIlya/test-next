@@ -1,17 +1,15 @@
-'use client';
-import { LoginForm } from './components/LoginForm';
-import { useLogin } from './hooks/useLogin';
+"use client";
+import { Suspense } from "react";
+import { LoginForm } from "./components/LoginForm";
+import { useLogin } from "./hooks/useLogin";
+import Loader from "../../shared/components/Loader/Loader";
 
 export default function LoginPage() {
   const { login, error, loading } = useLogin();
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <LoginForm 
-        onSubmit={login} 
-        error={error}
-        loading={loading}
-      />
-    </div>
+    <Suspense fallback={<Loader />}>
+      <LoginForm onSubmit={login} error={error} loading={loading} />
+    </Suspense>
   );
 }

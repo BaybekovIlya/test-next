@@ -1,12 +1,10 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useState } from "react";
 
 export const useLogin = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +15,7 @@ export const useLogin = () => {
     try {
       if (username && password) {
         Cookies.set("auth_token", "mock_auth_token", { expires: 1 });
-        router.push(redirect);
+        router.push('/');
       } else {
         throw new Error("Введите логин и пароль");
       }

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/next-auth-app' : '',
+  output: "export",
+  basePath: "/test-next",
   images: {
     unoptimized: true,
   },
@@ -9,4 +9,4 @@ const nextConfig = {
   skipMiddlewareUrlNormalize: true,
 };
 
-module.exports = nextConfig;
+export default nextConfig;

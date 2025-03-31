@@ -2,6 +2,7 @@
 const nextConfig = {
   output: "export",
   basePath: "/test-next",
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
@@ -9,4 +10,4 @@ const nextConfig = {
   skipMiddlewareUrlNormalize: true,
 };
 
-export default nextConfig;
+module.exports = nextConfig;

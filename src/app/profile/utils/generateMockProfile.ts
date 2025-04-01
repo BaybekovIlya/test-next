@@ -1,8 +1,10 @@
 import { faker } from "@faker-js/faker/locale/ru";
 
-export const generateMockProfile = () => ({
+import { IProfile } from "../types/IProfile";
+
+export const generateMockProfile = (): IProfile => ({
   fullName: faker.person.fullName(),
-  phone: faker.phone.number("+7 (###) ###-##-##"),
+  phone: faker.phone.number(),
   email: faker.internet.email(),
   address: faker.location.streetAddress(),
 });

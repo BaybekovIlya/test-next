@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/test-next",
+  basePath: process.env.NODE_ENV === "production" ? "/test-next" : "",
   trailingSlash: true,
   images: {
     unoptimized: true,

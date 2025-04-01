@@ -1,8 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
-import Loader from "../../../shared/components/Loader/Loader";
 
-export const ProfileInfo = ({ profile, loading, handleLogout }) => {
+import { IProfileProps } from "../types/IProfileProps";
+
+import Loader from "@/shared/components/Loader/Loader";
+
+export const ProfileInfo = ({ profile, loading, handleLogout }: IProfileProps) => {
   const router = useRouter();
 
   if (loading) {

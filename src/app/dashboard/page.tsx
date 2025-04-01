@@ -9,10 +9,10 @@ import WithdrawForm from "./components/WithdrawForm";
 
 import { useDashboardData } from "./hooks/useDashboardData";
 
-import Loader from "../../shared/components/Loader/Loader";
+import Loader from "@/shared/components/Loader/Loader";
 
 export default function DashboardPage() {
-  const [isAuthLoading, setIsAuthLoading] = useState(true);
+  const [isAuthLoading, setIsAuthLoading] = useState<boolean>(true);
   const router = useRouter();
   const { dashboardData, setDashboardData, loading } = useDashboardData();
 
@@ -25,7 +25,9 @@ export default function DashboardPage() {
     }
   }, [router]);
 
-  const handleWithdraw = (amount) => {
+  const handleWithdraw = (amount: number) => {
+    if (!dashboardData) return;
+
     const balance = parseFloat(dashboardData.balance);
     const transactionsCount = dashboardData.transactionsCount;
 
@@ -59,7 +61,7 @@ export default function DashboardPage() {
               <div>
                 <button
                   className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition cursor-pointer"
-                  onClick={() => router.push('/')}
+                  onClick={() => router.push("/")}
                 >
                   Вернуться к профилю
                 </button>

@@ -1,15 +1,16 @@
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
-export const LoginForm = ({ onSubmit, error, loading }) => {
+import { ILoginFormProps } from "../types/ILoginFormProps";
+
+export const LoginForm = ({ onSubmit, error, loading }: ILoginFormProps) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit({ username, password });
   };
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center">

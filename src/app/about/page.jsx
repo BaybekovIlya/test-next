@@ -1,6 +1,7 @@
 "use client";
 import { faker } from "@faker-js/faker";
 import { useRouter } from "next/navigation";
+
 import AboutBackgrountImage from "./components/AboutBackgrountImage";
 
 export default function AboutPage() {

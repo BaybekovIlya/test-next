@@ -2,20 +2,21 @@
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import { ILoginCredentials } from "../types/ILoginCredentials";
 
 export const useLogin = () => {
   const router = useRouter();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const login = async ({ username, password }) => {
+  const login = async ({ username, password }: ILoginCredentials) => {
     setError("");
     setLoading(true);
 
     try {
       if (username && password) {
         Cookies.set("auth_token", "mock_auth_token", { expires: 1 });
-        router.push('/');
+        router.push("/");
       } else {
         throw new Error("Введите логин и пароль");
       }
@@ -35,9 +36,11 @@ export const useLogin = () => {
       }
 
       Cookies.set("auth_token", data.token, { expires: 1 });
-      router.push(redirect);
+      router.push("/");
     } catch (err) {
-      setError(err.message || "Ошибка соединения с сервером");
+      setError(
+        err instanceof Error ? err.message : "Ошибка соединения с сервером"
+      );
     } finally {
       setLoading(false);
     }

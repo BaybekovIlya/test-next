@@ -2,11 +2,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+
 import { generateMockProfile } from "../utils/generateMockProfile";
 
-export const useProfile = () => {
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
+import { IProfileProps } from "../types/IProfileProps";
+import { IProfile } from "../types/IProfile";
+
+export const useProfile = (): IProfileProps => {
+  const [profile, setProfile] = useState<IProfile | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {

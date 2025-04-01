@@ -1,10 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
+
 import { generateMockDashboardData } from "../utils/generateMockDashboardData";
 
+import { IDashboardData } from "../types/IDashboardData";
+
 export const useDashboardData = () => {
-  const [dashboardData, setDashboardData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [dashboardData, setDashboardData] = useState<IDashboardData | null>(
+    null
+  );
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
